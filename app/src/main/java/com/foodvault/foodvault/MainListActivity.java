@@ -45,7 +45,7 @@ public class MainListActivity extends Activity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), AddActivity.class);
+                Intent intent = new Intent(view.getContext(), RecipeActivity.class);
                 startActivity(intent);
             }
         });
@@ -58,7 +58,7 @@ public class MainListActivity extends Activity {
         arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, recipesArray);
         RecipesListView.setAdapter(arrayAdapter);*/
     }
-}
+
 
 class ListTestAdapter extends ArrayAdapter<String>
 {
