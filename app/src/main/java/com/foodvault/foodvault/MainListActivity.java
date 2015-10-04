@@ -28,10 +28,33 @@ public class MainListActivity extends Activity {
     String [] foodDescriptions;
     int [] images={R.drawable.foodvaultbutton};
 
+    DatabaseHandler db = new DatabaseHandler(this);
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_list);
+
+        db.addRecipe(new Recipe("Enchiladas","https://allrecipes.com","40","flour","4","Great Recipe"));
+        db.addRecipe(new Recipe("Nutella Cookies",
+                "http://kirbiecravings.com/2014/05/4-ingredient-chewy-nutella-cookies.html","30",
+                "all purpose flour, extra large egg, Nutella, baking powder","4.5","Really soft."));
+        db.addRecipe(new Recipe("White Chocolate Macadamia Nut Cookies",
+                "http://allrecipes.com/recipe/10025/white-chocolate-macadamia-nut-cookies-iii/",
+                "45","butter, light brown sugar, white sugar, eggs, vanilla extract, almond extract, " +
+                "all purpose flour, baking soda, salt, macadamia nuts, white chocolate","5","The " +
+                "thinner the better!"));
+        db.addRecipe(new Recipe("Peanut Butter Cookies",
+                "http://allrecipes.com/recipe/10275/classic-peanut-butter-cookies/","85","unsalted " +
+                "butter, peanut butter, white sugar, brown sugar, eggs, all purpose flour, baking " +
+                "powder, salt, baking soda","4","Chunky PB is da bomb."));
+        db.addRecipe(new Recipe("Chocolate Chip Cookies",
+                "http://allrecipes.com/recipe/10813/best-chocolate-chip-cookies/", "60", "butter " +
+                "white sugar, brown sugar, eggs, vanilla extract, all purpose flour, baking soda, " +
+                "hot water, salt, chocolate chips, walnuts", "4.5", "Harden quickly!"));
+        db.addRecipe(new Recipe("Sugar Cookies", "http://allrecipes.com/recipe/9870/easy-sugar-cookies/",
+                "25", "all purpose floud, baking soda, baking powder, butter, white sugar, egg, " +
+                "vanilla extract", "4", "Make sure butter is completely softed!"));
 
         Resources res=getResources();
         foodTitles=res.getStringArray(R.array.Titles);
@@ -56,7 +79,7 @@ public class MainListActivity extends Activity {
                 Intent myIntent = new Intent(view.getContext(), RecipeActivity.class);
                 int idInt = (int) id; // from 0 to ~
                 String idString = Integer.toString(idInt);
-                myIntent.putExtra("ID",idString);
+                myIntent.putExtra("id",idString);
                 //intent.putExtra("chosen", position);
                 startActivity(myIntent);
             }
