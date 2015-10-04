@@ -12,11 +12,11 @@ public class RecipeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
-        DatabaseHandler db = new DatabaseHandler(this);
-        Intent myIntent = getIntent(); // gets the previously created intent
-        String idString = myIntent.getStringExtra("ID");
 
+        Intent myIntent = getIntent();
+        String idString = myIntent.getStringExtra("id");
         int ID = Integer.parseInt(idString);
+        DatabaseHandler db = new DatabaseHandler(this);
 
         Recipe thisRecipe = db.getRecipe(ID);
 
