@@ -11,6 +11,8 @@ public class RecipeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
         DatabaseHandler db = new DatabaseHandler(this);
+        db.addRecipe(new Recipe(1, "Enchiladas", "https://allrecipes.com", "40", "flour", "5",
+                "Great Recipe"));
         Recipe thisRecipe = db.getRecipe(1);
 
         TextView recipeName = (TextView) findViewById(R.id.textView1);
