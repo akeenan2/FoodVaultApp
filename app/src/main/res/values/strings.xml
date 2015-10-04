@@ -8,6 +8,7 @@
     <string name="recipe_ingredients">Ingredients</string>
     <string name="recipe_rating">Rating</string>
     <string name="recipe_comments">Comments</string>
+    <string name="minutes">min</string>
 
     <string-array name="Titles">
         <item>Food 1</item>
@@ -25,4 +26,5 @@
         <item>This is food 5</item>
         <item>This is food 6</item>
     </string-array>
+    <string name="title_activity_button">button</string>
 </resources>

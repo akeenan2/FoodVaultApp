@@ -1,12 +1,15 @@
 package com.foodvault.foodvault;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.app.Activity;
+import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -34,9 +37,31 @@ public class MainListActivity extends Activity {
         foodTitles=res.getStringArray(R.array.Titles);
         foodDescriptions=res.getStringArray(R.array.Description);
 
-        list= (ListView) findViewById(R.id.listView);
+        list = (ListView) findViewById(R.id.listView);
         ListTestAdapter adapter=new ListTestAdapter(this, foodTitles, images, foodDescriptions);
         list.setAdapter(adapter);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), RecipeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent myIntent = new Intent(view.getContext(), RecipeActivity.class);
+                int idInt = (int) id; // from 0 to ~
+                String idString = Integer.toString(idInt);
+                myIntent.putExtra("ID",idString);
+                //intent.putExtra("chosen", position);
+                startActivity(myIntent);
+            }
+        });
+    }
         /*RecipesListView = (ListView) findViewById(R.id.recipes_list);
 
         // this-The current activity context.
@@ -44,8 +69,8 @@ public class MainListActivity extends Activity {
         // Third param is input array
         arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, recipesArray);
         RecipesListView.setAdapter(arrayAdapter);*/
-    }
 }
+
 
 class ListTestAdapter extends ArrayAdapter<String>
 {
@@ -77,4 +102,5 @@ class ListTestAdapter extends ArrayAdapter<String>
 
         return row;
     }
+
 }
