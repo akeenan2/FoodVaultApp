@@ -1,53 +1,80 @@
 package com.foodvault.foodvault;
 
-import android.content.Intent;
+import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.app.Activity;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 
-public class MainListActivity extends AppCompatActivity {
+public class MainListActivity extends Activity {
+    /*private String[] recipesArray = {"cake", "soup", "smoothie", "salad"};
+
+    private ListView RecipesListView;
+    private ArrayAdapter arrayAdapter;
+
+    /** Called when the activity is first created. */
+
+    ListView list;
+    String [] foodTitles;
+    String [] foodDescriptions;
+    int [] images={R.drawable.foodvaultbutton};
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_list);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), AddActivity.class);
-                startActivity(intent);
-            }
-        });
+        Resources res=getResources();
+        foodTitles=res.getStringArray(R.array.Titles);
+        foodDescriptions=res.getStringArray(R.array.Description);
+
+        list= (ListView) findViewById(R.id.listView);
+        ListTestAdapter adapter=new ListTestAdapter(this, foodTitles, images, foodDescriptions);
+        list.setAdapter(adapter);
+        /*RecipesListView = (ListView) findViewById(R.id.recipes_list);
+
+        // this-The current activity context.
+        // Second param is the resource Id for list layout row item
+        // Third param is input array
+        arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, recipesArray);
+        RecipesListView.setAdapter(arrayAdapter);*/
+    }
+}
+
+class ListTestAdapter extends ArrayAdapter<String>
+{
+    Context context;
+    int [] images;
+    String[] titleArray;
+    String[] descriptionArray;
+    ListTestAdapter(Context c, String[] Titles, int imgs[], String[] desc)
+    {
+        super(c, R.layout.single_row, R.id.textView1, Titles);
+        this.context=c;
+        this.images=imgs;
+        this.titleArray=Titles;
+        this.descriptionArray=desc;
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main_list, menu);
-        return true;
-    }
+    public View getView(int position, View convertView, ViewGroup parent) {
+        LayoutInflater inflater= (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View row=inflater.inflate(R.layout.single_row,parent, false);
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        ImageView myImage= (ImageView) row.findViewById(R.id.imageView1);
+        TextView myTitle= (TextView) row.findViewById(R.id.textView1);
+        TextView myDescription= (TextView) row.findViewById(R.id.textView3);
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        myImage.setImageResource(images[0]);
+        myTitle.setText(titleArray[position]);
+        myDescription.setText(descriptionArray[position]);
 
-        return super.onOptionsItemSelected(item);
+        return row;
     }
 }

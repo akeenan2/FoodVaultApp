@@ -1,4 +1,21 @@
 <resources>
     <string name="app_name">Food Vault</string>
     <string name="action_settings">Settings</string>
+    <string-array name="Titles">
+        <item>Food 1</item>
+        <item>Food 2</item>
+        <item>Food 3</item>
+        <item>Food 4</item>
+        <item>Food 5</item>
+        <item>Food 6</item>
+    </string-array>
+    <string-array name="Description">
+        <item>This is food 1</item>
+        <item>This is food 2</item>
+        <item>This is food 3</item>
+        <item>This is food 4</item>
+        <item>This is food 5</item>
+        <item>This is food 6</item>
+    </string-array>
+
 </resources>
