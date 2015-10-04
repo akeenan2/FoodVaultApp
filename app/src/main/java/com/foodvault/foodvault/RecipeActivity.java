@@ -1,5 +1,6 @@
 package com.foodvault.foodvault;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -10,10 +11,12 @@ public class RecipeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
+
+        Intent myIntent = getIntent();
+        String idString = myIntent.getStringExtra("id");
+        int ID = Integer.parseInt(idString);
         DatabaseHandler db = new DatabaseHandler(this);
-        db.addRecipe(new Recipe(1, "Enchiladas", "https://allrecipes.com", "40", "flour", "5",
-                "Great Recipe"));
-        Recipe thisRecipe = db.getRecipe(1);
+        Recipe thisRecipe = db.getRecipe(ID);
 
         TextView recipeName = (TextView) findViewById(R.id.textView1);
         recipeName.setText(thisRecipe.getName());
@@ -27,5 +30,7 @@ public class RecipeActivity extends AppCompatActivity {
         recipeRating.setText(thisRecipe.getRating());
         TextView recipeComments = (TextView) findViewById(R.id.textView6);
         recipeComments.setText(thisRecipe.getComments());
+
+
     }
 }
