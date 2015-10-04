@@ -10,4 +10,11 @@ public class RecipeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
     }
+
+    public void setRating(float rating) {
+        this.rating = rating;
+    }
+
+    float rating = Float.parseFloat(string);
+    ratingBar.setRating(rating);
 }
