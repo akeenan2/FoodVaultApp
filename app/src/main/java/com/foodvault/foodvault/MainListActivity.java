@@ -79,7 +79,7 @@ public class MainListActivity extends Activity {
                 Intent myIntent = new Intent(view.getContext(), RecipeActivity.class);
                 int idInt = (int) id; // from 0 to ~
                 String idString = Integer.toString(idInt);
-                myIntent.putExtra("ID",idString);
+                myIntent.putExtra("id",idString);
                 //intent.putExtra("chosen", position);
                 startActivity(myIntent);
             }
