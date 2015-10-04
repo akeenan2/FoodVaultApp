@@ -15,7 +15,9 @@ public class RecipeActivity extends AppCompatActivity {
         DatabaseHandler db = new DatabaseHandler(this);
         Intent myIntent = getIntent(); // gets the previously created intent
         String idString = myIntent.getStringExtra("ID");
+
         int ID = Integer.parseInt(idString);
+
         Recipe thisRecipe = db.getRecipe(ID);
 
         TextView recipeName = (TextView) findViewById(R.id.textView1);
@@ -35,5 +37,7 @@ public class RecipeActivity extends AppCompatActivity {
 
         TextView recipeComments = (TextView) findViewById(R.id.textView6);
         recipeComments.setText(thisRecipe.getComments());
+
+
     }
 }
