@@ -9,8 +9,6 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="10dp"
-        android:layout_alignParentTop="true"
-
         android:src="@mipmap/foodvaultbutton" />
     <TextView
         android:id="@+id/textView1"
