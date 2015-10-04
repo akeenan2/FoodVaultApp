@@ -13,8 +13,6 @@ public class RecipeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
         DatabaseHandler db = new DatabaseHandler(this);
-        db.addRecipe(new Recipe(1, "Enchiladas", "https://allrecipes.com", "40", "flour", "4",
-                "Great Recipe"));
         Intent myIntent = getIntent(); // gets the previously created intent
         String idString = myIntent.getStringExtra("ID");
         int ID = Integer.parseInt(idString);
