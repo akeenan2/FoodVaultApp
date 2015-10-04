@@ -1,9 +1,12 @@
 package com.foodvault.foodvault;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.app.Activity;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +40,16 @@ public class MainListActivity extends Activity {
         list= (ListView) findViewById(R.id.listView);
         ListTestAdapter adapter=new ListTestAdapter(this, foodTitles, images, foodDescriptions);
         list.setAdapter(adapter);
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), AddActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
         /*RecipesListView = (ListView) findViewById(R.id.recipes_list);
 
         // this-The current activity context.

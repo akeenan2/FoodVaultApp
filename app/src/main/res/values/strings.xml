@@ -25,4 +25,5 @@
         <item>This is food 5</item>
         <item>This is food 6</item>
     </string-array>
+    <string name="title_activity_button">button</string>
 </resources>
