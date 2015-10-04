@@ -54,9 +54,9 @@ public class MainListActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent myIntent = new Intent(view.getContext(), RecipeActivity.class);
-                int idInt = (int) id;
+                int idInt = (int) id; // from 0 to ~
                 String idString = Integer.toString(idInt);
-                myIntent.putExtra("ID","1");
+                myIntent.putExtra("ID",idString);
                 //intent.putExtra("chosen", position);
                 startActivity(myIntent);
             }
