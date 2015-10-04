@@ -12,12 +12,12 @@ public class RecipeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe);
-        DatabaseHandler db = new DatabaseHandler(this);
-        db.addRecipe(new Recipe(1, "Enchiladas", "https://allrecipes.com", "40", "flour", "4",
-                "Great Recipe"));
-        Intent myIntent = getIntent(); // gets the previously created intent
-        String idString = myIntent.getStringExtra("ID");
+
+        Intent myIntent = getIntent();
+        String idString = myIntent.getStringExtra("id");
         int ID = Integer.parseInt(idString);
+        DatabaseHandler db = new DatabaseHandler(this);
+
         Recipe thisRecipe = db.getRecipe(ID);
 
         TextView recipeName = (TextView) findViewById(R.id.textView1);
@@ -37,5 +37,7 @@ public class RecipeActivity extends AppCompatActivity {
 
         TextView recipeComments = (TextView) findViewById(R.id.textView6);
         recipeComments.setText(thisRecipe.getComments());
+
+
     }
 }
